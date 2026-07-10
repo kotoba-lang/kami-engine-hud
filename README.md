@@ -1,14 +1,16 @@
-# kotoba-lang/kami-engine-hud
+# kotoba-lang/kami-engine-hud (shim → archived)
 
-Kotoba runtime package for `kotoba.ui`: kami-engine's DOM-overlay HUD
-(`:panel`/`:bar`/`:minimap`/`:text` widgets rendered over the WebGPU game
-canvas). Renamed from `kotoba-lang/ui` to avoid collision with the
-`kotoba-ui`/`appkit`/`uikit` app design-system family, which is an unrelated
-stack (see `90-docs/adr/2607051200-kotoba-lang-ui-family-rename.md` in
-`com-junkawasaki/root`).
+> **Merged into [`kami-engine-app-sdk`](https://github.com/kotoba-lang/kami-engine-app-sdk)
+> (ADR-2607102200 addendum 2, 2026-07-10).** Namespace `kotoba.ui` (hiccup HUD
+> overlay) now lives there alongside motion/sound/effect/rtc/widgets.
+>
+> New code must depend on **`kami-engine-app-sdk`**, not this repo.
+> This package is a thin deps-only shim so old `:local/root "../kami-engine-hud"`
+> paths still resolve `kotoba.ui` via the app-sdk dependency. The GitHub repo
+> is archived.
 
-## Test
-
-```sh
-clojure -M:test
+```clojure
+;; preferred
+io.github.kotoba-lang/kami-engine-app-sdk {:local/root "../kami-engine-app-sdk"}
+(require '[kotoba.ui :as ui])  ; still the same ns
 ```
